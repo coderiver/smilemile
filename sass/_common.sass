@@ -46,10 +46,415 @@
 // 	+png(blabla)
 // p
 // 	+jpg(bla)
-body
-	font-family: Arial, sans-serif 
-	font-size: 12px 
-	line-height: 1.4
 
+=rob
+	font-family: 'Roboto', sans-serif
+
+$black: #000
+$white: #fff
+$dark-white: #fff
+$grey: #8c8c91
+$grey2: #525252
+$purple: #9a94ff
+$purple2: #746fcd
+
+body 
+	font-size: 13px
+	font-weight: 400
+	line-height: 1.4
+	background: url(../img/bg.png) repeat
+	+rob
 
 // common blocks      
+
+//out 
+.out
+	min-height: 100%
+	height: auto !important
+	height: 100%
+	margin: 0 auto -67px
+
+//container
+.container
+	margin: 0 auto
+	max-width: 1200px
+	min-width: 1000px
+
+//wrapper
+.wrapper
+	padding: 26px 0 52px
+	background: url(../img/bg-wrap.png) repeat
+
+//wrap
+.wrap
+	margin-right: 38px
+	+border-radius(25px)
+	+box-shadow(0 1px 12px #000)
+
+//header
+.header
+	position: relative
+	padding: 25px 0 0
+	background: url('../img/bg-header.png') no-repeat 50% 0
+	background-size: cover
+	&:before
+		position: absolute
+		content: ""
+		bottom: 1px
+		height: 1px
+		width: 100%
+		z-index: 1000
+		background: $black
+		background: rgba($black, .3)
+	&:after
+		position: absolute
+		content: ""
+		bottom: 0
+		height: 1px
+		width: 100%
+		z-index: 1000
+		background: $grey
+		background: rgba($grey, .5)
+	a
+		color: $purple
+		text-decoration: none
+		&:hover
+			text-decoration: underline
+	.header__top
+		padding-bottom: 30px
+	.header__language
+		float: left
+		.select__text
+			color: $purple
+	.header__logo
+		margin: 0 auto
+	.header__right
+		float: right
+	.header__language, .header__logo, .header__register, .header__bottom
+		position: relative
+		z-index: 2
+	.header__bottom
+		padding: 0 0 30px
+		text-align: center
+	.header__right_mod
+		text-align: right
+		p
+			padding-bottom: 5px
+
+// header footer
+.header, .footer
+	color: $grey
+	border-top: 1px solid $grey2
+	+text-shadow(0 -1px 0 #000)
+
+
+//language
+.language
+	.language__select
+		display: inline-block
+	.language__text
+		margin-right: 5px
+		display: inline-block
+		vertical-align: top 
+		
+//select
+.select
+	position: relative
+	padding-right: 15px
+	cursor: pointer
+	font-size: 13px
+	.select_white
+		background: #fff 
+		text-overflow: ellipsis
+	.ico
+		position: absolute
+		right: 0
+		top: 4px
+	.select__text
+		position: relative
+		display: inline-block
+		height: 18px
+		line-height: 17px
+		border-bottom: 1px dashed $grey
+		white-space: nowrap
+		overflow: hidden
+	.select__list
+		position: absolute
+		display: none
+		left: 0
+		right: 0
+		top: 80%
+		z-index: 100
+		color: $white
+		border: 1px dashed $grey
+		max-height: 200px
+		overflow-x: hidden
+		overflow-y: auto
+		background: $grey2
+		li
+			padding: 5px 11px 
+			cursor: pointer
+			line-height: 1
+			&:hover
+				background: #717791
+				color: $purple
+
+//logo 
+.logo
+	margin: 0 auto
+	width: 315px
+	display: block
+
+//ico
+.ico
+	display: inline-block
+	&.ico_logo
+		+s(logo1)
+	&.ico_select
+		+s(ico_lang)
+	&.ico_reg
+		+s(ico_reg) 
+	&.ico_logo2
+		+s(logo2)
+	&.ico_settings
+		+s(settings)
+	&.ico_exit
+		+s(exit)
+	&.ico_add
+		+s(add)
+
+//topic
+.topic
+	padding: 8px 0
+	text-align: center
+	background: url(../img/bg-login.png) no-repeat 50% 0
+	background-size: cover
+
+//table
+.table
+	background: #fff
+	tr
+		&:nth-child(even)
+			background: #f4f4f4
+	th,td
+		padding: 0 33px
+		font-size: 15px
+		+box
+		&:first-child
+			padding-left: 48px
+			width: 29.5%
+			border: none
+		&:last-child
+			padding-right: 48px
+			width: 38.2%
+	th
+		padding-top: 30px
+		height: 62px
+		color: #5e5e5e
+		font-weight: 700
+		text-align: left
+	td
+		height: 50px
+		color: #2d2d2d
+		line-height: 50px
+		border-left: 1px solid #e7e7e7
+		.input
+			margin: 0 -15px
+	.table__text
+		position: relative
+		.btntable_edit
+			position: absolute
+			right: 0
+			top: 50%
+			margin-top: -7px
+.btntable
+	display: inline-block
+	background: none
+	&.btntable_edit
+		+s(edit)
+	&.btntable_add
+		color: $purple2
+		font-size: 15px
+		&:hover
+			text-decoration: underline
+
+//input
+.input
+	.input__row
+	input
+		padding: 0 20px
+		height: 37px
+		width: 100%
+		font-size: 15px
+		border: 1px solid #c7c7c7
+		color: #2d2d2d
+		+border-radius(18px)
+		background-color: #fff
+		+placeholder-color(#2d2d2d)
+		+box
+		&:focus
+			+placeholder
+				font-size: 0
+
+//menu
+.menu
+	font-size: 0
+	.menu__item
+		display: inline-block
+	a
+		padding: 0 30px
+		height: 52px
+		color: #d3d3d3
+		text-decoration: none
+		font-size: 17px
+		line-height: 52px
+		display: block
+		+transition(0.2s)
+		&:hover,
+		&.is-active
+			color: #999999
+			background-color: rgba(0,0,0,.3)
+			+box-shadow(0 1px 0 rgba(255,255,255,.26), inset 0 1px 3px rgba(0,0,0,.64))
+			+border-radius(52px)
+
+//register
+.register
+	text-decoration: none
+	color: $purple
+	.ico
+		margin-left: 10px
+//log-in
+.log-in
+	position: relative
+	.log-in_wrap
+		position: absolute
+		top: 100%
+		width: 100%
+		left: 0
+		z-index: 300
+		height: auto
+		background: url(../img/bg-login.png) no-repeat 50% 0
+		background-size: cover
+	.log-in__form
+		position: relative
+		padding: 20px 0 10px
+		margin: 0 auto
+		width: 652px
+		display: none
+		.form__row
+			font-size: 0
+			margin-bottom: 8px
+			height: 62px
+		.form__col
+			margin-right: 12px
+	.btn_log
+		position: absolute
+		left: 50%
+		bottom: -60px
+		margin-left: -195px
+		z-index: 1000
+	.log-in__text
+		padding-right: 30px
+		text-align: right
+		+box
+
+// //form
+.form
+	input
+		padding: 0 20px
+		width: 100%
+		height: 100%
+		color: $grey
+		font-size: 15px
+		background-color: rgba(0,0,0,.3)
+		+box-shadow(0 1px 0 rgba(255,255,255,.26), inset 0 1px 3px rgba(0,0,0,.64))
+		+border-radius(62px)
+		+box
+		+placeholder-color($grey)
+		&:focus
+			+placeholder
+				font-size: 0
+	.form__row
+		height: 37px
+	.form__col
+		height: 62px
+		display: inline-block
+	.form__col_312
+		width: 312px
+
+// //btn
+.btn
+	width: 200px
+	height: 38px
+	color: $dark-white
+	line-height: 37px
+	font-size: 17px
+	+text-shadow(0 -1px 0 rgba(0,0,0,.31))
+	+box-shadow(0 1px 5px #000)
+	+border-radius(37px)
+	background: $purple2
+	display: inline-block
+	&:hover
+		background: rgba($purple2, .8)
+	&.btn_log
+		color: $grey
+		+box-shadow(none)
+		+border-radius(0)
+		+s(bg-log-in)
+		font-size: 21px
+		&.is-active, &:hover
+			color: $white
+			+sp(bg-log-in-hov)
+	&.btn_nbg
+		color: $purple
+		font-size: 13px
+		height: auto
+		width: auto
+		line-height: 1.4
+		+box-shadow(none)
+		+border-radius(0)
+		background: none
+		&:hover
+			text-decoration: underline
+		
+// //slider
+.slider
+	min-width: 1000px
+	.slider__item
+		height: 860px
+		width: 100%
+		background-size: cover !important
+
+
+// //footer
+.footer, .push
+	height: 67px
+
+.footer
+	padding: 15px 0
+	.footer__phone
+		float: left
+	.footer__number
+		font-size: 20px
+	.footer__copyright
+		float: right
+		padding-top: 20px
+
+//scroll-pane
+.scroll-pane
+	max-height: 536px
+	overflow: auto
+	.jspVerticalBar
+		right: 16px !important
+		background: none
+	.jspTrack
+		width: 17px
+		background: rgba($black,.3)
+		+border-radius(17px)
+		+box-shadow(0 1px 0 rgba(255,255,255,.26), inset 0 1px 3px rgba(0,0,0,.64))
+	.jspDrag
+		width: 10px
+		margin-left: 3.5px
+		+box-shadow(0 1px 5px #000, inset 0 1px 0 rgba(255,255,255,.82))
+		+background-image(linear-gradient(bottom, #736fcd 0%, #908bed 100%))
+		+border-radius(10px)
