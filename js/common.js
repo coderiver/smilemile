@@ -8,6 +8,9 @@ head.ready(function() {
 	$(document).click(function() {
         $(".js-select-list").hide();
         $(".js-select").removeClass("is-active");
+        $(".js-popup").slideUp();
+        $(".js-log-in-form").slideUp();
+        $(".js-log").removeClass("is-active");
     });
 
     //selectList
@@ -54,6 +57,23 @@ head.ready(function() {
     	    js_form.slideDown();
     	    $(this).addClass("is-active");
     	}
+        return false;
+    });
+
+    //datepicker
+    $( "#datepicker, #datepicker2" ).datepicker({
+        showOn: "both",
+        buttonImage: "img/calendar.png",
+        buttonImageOnly: false,
+        dateFormat: "mm.dd.yy"
+    });
+
+    $(".js-add, .js-close").click(function(){
+        $(".js-popup").slideToggle();
+        return false;
+    })
+    $("body").on("click", ".js-popup, .js-log-in-form", function(event){
+        event.stopPropagation();
     });
 
 });
