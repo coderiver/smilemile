@@ -241,7 +241,7 @@
 		</div>
 		<div class="form__row">
 			<div class="form__col form__col_316"><input type="text" placeholder="e-mail"></div>
-			<div class="form__col form__col_316"><input type="text" placeholder="+7 495 2423424234"></div>
+			<div class="form__col form__col_316 form__col_phone"><input type="text" placeholder="+7 495 2423424234"></div>
 		</div>
 		<textarea placeholder="Company details..."></textarea>
 	</div>
@@ -249,10 +249,45 @@
 		<div class="popup__left">Formula</div>
 		<div class="popup__right">
 			<div class="popup__choice choice">
-				<label><input type="checkbox"> Simple</label>
-				<label><input type="checkbox"> Range</label>
+				<label class="choice__checkbox"><input type="checkbox"><span>Simple</span></label>
+				<label class="choice__checkbox"><input type="checkbox"><span>Range</span></label>
+			</div>
+			<div class="form js-form">
+				<div class="form__row form__row_text">
+					<div class="form__col form__col_97">From:</div>
+					<div class="form__col form__col_97">To:</div>
+					<div class="form__col form__col_97">Percent:</div>
+				</div>
+				<div class="form__row">
+					<div class="form__col form__col_97"><input type="text" placeholder="900"></div>
+					<span>-</span>
+					<div class="form__col form__col_97"><input type="text" placeholder="1200"></div>
+					<div class="form__col form__col_97"><input type="text" placeholder="25"></div>
+					<span>%</span>
+				</div>
+				<div class="form__row">
+					<div class="form__col form__col_97"><input type="text" placeholder=""></div>
+					<span>-</span>
+					<div class="form__col form__col_97"><input type="text" placeholder=""></div>
+					<div class="form__col form__col_97"><input type="text" placeholder=""></div>
+					<span>%</span>
+					<button class="btn btn_close2 js-close-row"></button>
+				</div>
+				<!-- template -->
+				<div class="js-template-row" hidden>
+					<div class="form__row">
+						<div class="form__col form__col_97"><input type="text" placeholder=""></div>
+						<span>-</span>
+						<div class="form__col form__col_97"><input type="text" placeholder=""></div>
+						<div class="form__col form__col_97"><input type="text" placeholder=""></div>
+						<span>%</span>
+						<button class="btn btn_close2 js-close-row"></button>
+					</div>
+				</div>
+				<button class="btn btn_addrow js-addrow">Add row</button>
 			</div>
 		</div>
+		<div class="popup__bottom"><button class="btn btn_bot">Save changes</button></div>
 	</div>
 </div>
 <!-- END popup -->

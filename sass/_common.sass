@@ -62,7 +62,7 @@ body
 	font-size: 13px
 	font-weight: 400
 	line-height: 1.4
-	background: url(../img/bg.png) repeat
+	background: url(../img/bg-wrap.png) repeat
 	+rob
 
 // common blocks      
@@ -72,7 +72,9 @@ body
 	min-height: 100%
 	height: auto !important
 	height: 100%
-	margin: 0 auto -67px
+	margin: 0
+	&.out_rel
+		position: relative
 
 //container
 .container
@@ -85,7 +87,6 @@ body
 //wrapper
 .wrapper
 	padding: 26px 0 52px
-	background: url(../img/bg-wrap.png) repeat
 	
 //wrap
 .wrap
@@ -414,21 +415,34 @@ body
 	.form__row
 		font-size: 0
 		height: 38px
+	.form__row_text
+		.form__col
+			padding-left: 18px
+			height: auto
+			font-size: 13px
 	.form__col
 		height: 38px
 		display: inline-block
+		vertical-align: top
+		+box
+	.form__col_phone
+		input
+			color: #d0d0d0
+			+placeholder-color(#d0d0d0)
+	.form__col_316
+		width: 316px
 	.form__col_312
 		height: 62px
 		width: 312px
+	.form__col_202
+		width: 202px
 	.form__col_142
 		position: relative
 		width: 142px
-	.form__col_202
-		width: 202px
+	.form__col_97
+		width: 97px
 	.form__col_93
 		width: 93px
-	.form__col_316
-		width: 316px
 	.ui-datepicker-trigger
 		position: absolute
 		top: 0
@@ -477,7 +491,7 @@ body
 			+placeholder
 				font-size: 0
 
-// //btn
+//btn
 .btn
 	width: 200px
 	height: 38px
@@ -519,6 +533,18 @@ body
 			vertical-align: middle
 	&.btn_close
 		+s(ico-close)
+	&.btn_close2
+		+box-shadow(none)
+		+s(close-row)
+	&.btn_addrow
+		width: auto
+		height: auto
+		line-height: 1
+		font-size: 13px
+		background: none
+		+box-shadow(none)
+		&:hover
+			text-decoration: underline
 
 //search
 .search, .blocktop
@@ -527,6 +553,7 @@ body
 		position: relative
 		margin-right: 82px
 		width: 548px
+		vertical-align: top
 		display: inline-block
 		.btn
 			position: absolute
@@ -552,6 +579,7 @@ body
 		width: 490px
 		display: inline-block
 		text-align: left
+		vertical-align: top
 	.editing__top
 		padding: 28px 0
 		color: #4d4d4d
@@ -587,17 +615,31 @@ body
 	display: none
 	.form
 		display: inline-block
+		vertical-align: top
 .edit, .blocktop
 	.form__col
 		margin-right: 15px
 
 // //slider
 .slider
-	min-width: 1000px
+	position: absolute
+	top: 194px
+	bottom: 98px
+	left: 0
+	right: 0px
+	.cycle-slideshow
+		height: 100%
 	.slider__item
-		height: 840px
-		width: 100%
+		position: absolute !important
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		overflow: hidden !important
 		background-size: cover !important
+		img
+			width: 100%
+			opacity: 0
 
 //popup
 .popup
@@ -609,8 +651,10 @@ body
 	width: 725px
 	color: #999999
 	z-index: 2
-	background: url(../img/bg.png) repeat
+	background: url(../img/bg-wrap.png) repeat
+	display: none
 	+border-radius(24px)
+	+box-shadow(0 1px 8px #000)
 	+box
 	textarea
 		height: 110px
@@ -622,18 +666,59 @@ body
 		float: left
 	.popup__right
 		float: right
+		width: 517px
+		.form
+			margin: 18px 0 24px
+			padding: 20px 0 15px 25px
+			position: relative
+			border-top: 1px solid #343434
+			border-bottom: 1px solid #343434
+			&:before
+				position: absolute
+				content: ''
+				left: 0
+				top: 0
+				height: 1px
+				width: 100%
+				background: #7c7c7c
+			&:after
+				position: absolute
+				content: ''
+				bottom: -2px
+				left: 0
+				width: 100%
+				height: 1px
+				background: #7c7c7c
+		.form__row
+			height: 38px
+			line-height: 38px
+			font-size: 15px
+			span
+				margin-left: -3px
+			.btn_close2
+				margin-left: 18px
+		.form__row_text
+			height: auto
+			line-height: 1
+		.form__col
+			margin-right: 12px
+		.btn_addrow
+			margin: 9px 0 0 18px
+		// .btn_bot
+		// 	margin-left: 
 	.popup__left, .popup__right
 		font-size: 15px
 	.popup__choice
 		padding-left: 70px
-		label
+		.choice__checkbox
 			margin-right: 100px
 	.popup__top
 		padding-bottom: 20px
-		text-align: center
 		font-size: 17px
 		color: #d3d3d3
 		+text-shadow(0 -1px 0 #000)
+	.popup__bottom, .popup__top
+		text-align: center
 	.btn_close
 		position: absolute
 		top: 13px
@@ -646,8 +731,52 @@ body
 		&:first-child
 			margin-left: 0
 
-// .choice
-
+// choice
+.choice
+	font-size: 15px
+	color: #d7d7d7
+	.choice__checkbox
+		position: relative
+		display: inline-block
+		+unselectable
+		input
+			position: absolute
+			left: 0
+			top: 0
+			width: 18px
+			height: 18px
+			opacity: 0
+			z-index: 2
+			&:checked
+				+ span
+					&:after
+						display: block
+	span
+		display: inline-block
+		position: relative
+		padding-left: 25px
+		&:before
+			content: ""
+			position: absolute
+			left: 0
+			top: 0
+			width: 20px
+			height: 20px
+			background-color: $grey
+			background-color: rgba(0,0,0,.3)
+			+box-shadow(0 1px 0 rgba(255,255,255,.26), inset 0 1px 3px rgba(0,0,0,.64))
+			+border-radius(50%)
+		&:after
+			content: ""
+			position: absolute
+			top: 5px
+			left: 5px
+			width: 10px
+			height: 10px
+			+border-radius(5px)
+			background: $purple
+			+box-shadow(0 1px 0 rgba(0,0,0,.83), inset 0 1px 0 rgba(255,255,255,.45))
+			display: none
 
 //datepicker
 .ui-datepicker-header
@@ -667,7 +796,13 @@ body
 	height: 67px
 
 .footer
+	position: fixed
+	bottom: 0
+	left: 0
+	width: 100%
 	padding: 15px 0
+	z-index: 300
+	background: url(../img/bg.png) repeat
 	.footer__phone
 		float: left
 	.footer__number
@@ -678,7 +813,8 @@ body
 
 //scroll-pane
 .scroll-pane
-	margin: -8px 0 -8px -8px
+	margin: 0 0 -8px -8px
+	// padding-top: 8px
 	max-height: 590px
 	overflow: auto
 	&.scroll-pane_mod
@@ -688,17 +824,16 @@ body
 		right: 16px !important
 		background: none
 	.jspTrack
-		margin: 8px 0
-		height: 98% !important
+		// margin: 8px 0
+		// height: 98% !important
 		width: 18px 
 		background: rgba($black,.3)
 		+border-radius(17px)
 		+box-shadow(0 1px 0 rgba(255,255,255,.26), inset 0 1px 3px rgba(0,0,0,.64))
 	.jspDrag
 		width: 10px 
-		height: 72.3% !important
+		// height: 72.3% !important
 		margin-left: 4px
 		+box-shadow(0 1px 5px #000, inset 0 1px 0 rgba(255,255,255,.82))
 		+background-image(linear-gradient(bottom, #736fcd 0%, #908bed 100%))
 		+border-radius(10px)
- 

@@ -76,6 +76,17 @@ head.ready(function() {
         event.stopPropagation();
     });
 
+    $('.js-form').on('click', '.js-close-row', function(){
+        $(this).parent().remove();
+        return false;
+    });
+
+    $('.js-addrow').on("click", function(){
+        var template = $('.js-template-row').html();
+        $(this).before(template);
+        return false;
+    });
+
 });
 	//scrollPane
 	$('.scroll-pane').jScrollPane({
