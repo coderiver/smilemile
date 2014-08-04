@@ -75,6 +75,59 @@ body
 	margin: 0
 	&.out_rel
 		position: relative
+		.google-map
+			position: absolute
+			top: 193px
+			left: 0
+			right: 0
+			bottom: 98px
+		.google-map__in
+			height: 100%
+			width: 100%
+		.gm-style-iw
+			top: 0 !important
+			left: 0 !important
+			right: 0 !important
+			bottom: 0 !important
+			overflow: initial !important
+			height: 0
+			width: 0
+		.gm-style-iw > div
+			position: relative
+			overflow: visible !important
+		.gm-style-iw + div
+			display: none
+
+		.google-map__block
+			float: right
+			padding: 0 0 0 45px
+			color: #dfdfdf
+			+text-shadow(0 -1px 0 #000)
+			+rob
+			+box
+			i
+				position: absolute
+				top: 24px
+				left: 20px
+				+s(marker)
+		.google-map__window
+			position: absolute
+			top: 0
+			left: -151px
+			padding: 20px
+			width: 320px
+			+box-shadow(0 1px 12px #000)
+			+border-radius(20px)
+			z-index: 3000
+			background: url(../img/bg-marker.png) repeat 0 0 
+			+box
+			&:before
+				position: absolute
+				content: ""
+				bottom: -17px
+				left: 50%
+				margin-left: -10px
+				+s(map-pic)
 
 //container
 .container
@@ -83,6 +136,10 @@ body
 	min-width: 1000px
 	&.container_rel
 		position: relative
+	&.container_map
+		position: relative
+		margin-top: 40px
+		z-index: 10
 
 //wrapper
 .wrapper
@@ -97,6 +154,9 @@ body
 	background: #fff
 	&.wrap_mod
 		margin: 8px 38px
+	&.wrap_partners
+		float: right
+		width: 338px
 
 
 //header
@@ -108,6 +168,7 @@ body
 	&:before
 		position: absolute
 		content: ""
+		left: 0
 		bottom: 1px
 		height: 1px
 		width: 100%
@@ -117,6 +178,7 @@ body
 	&:after
 		position: absolute
 		content: ""
+		left: 0
 		bottom: 0
 		height: 1px
 		width: 100%
@@ -241,15 +303,42 @@ body
 		+s(edit)
 	&.ico_delete
 		+s(ico-delete)
+	&.ico_yahoo
+		+s(yahoo)
+	&.ico_yandex
+		+s(yandex)
+	&.ico_mail
+		+s(mail)
 
 //topic
 .topic
+	position: relative
 	padding: 8px 0
 	color: #d3d3d3
 	font-size: 17px
 	text-align: center
 	background: url(../img/bg-login.png) no-repeat 50% 0
 	background-size: cover
+	&:before
+		position: absolute
+		content: ""
+		left: 0	
+		bottom: 1px
+		height: 1px
+		width: 100%
+		z-index: 1000
+		background: $black
+		background: rgba($black, .3)
+	&:after
+		position: absolute
+		content: ""
+		left: 0	
+		bottom: 0
+		height: 1px
+		width: 100%
+		z-index: 1000
+		background: $grey
+		background: rgba($grey, .5)
 	.topic__text
 		padding: 12px 0 12px 100px
 
@@ -563,6 +652,29 @@ body
 	.btn
 		margin-right: 38px
 
+.search_map
+	position: absolute
+	bottom: -62px
+	left: 50%
+	margin-left: -371px
+	height: 66px
+	width: 752px
+	text-align: center
+	line-height: 63px
+	z-index: 100
+	background: url('../img/bg-search.png') no-repeat 0 0
+	.search__text, .search__form
+		display: inline-block
+	.search__text
+		margin-right: 20px
+		font-size: 15px
+		+text-shadow(0 -1px 0 #000)
+	.search__form
+		margin: 12px 0 0
+		width: 385px
+		input
+			vertical-align: top
+
 //blocktop
 .blocktop
 	text-align: center
@@ -777,6 +889,33 @@ body
 			background: $purple
 			+box-shadow(0 1px 0 rgba(0,0,0,.83), inset 0 1px 0 rgba(255,255,255,.45))
 			display: none
+
+//partners
+.partners
+	.partners__top
+		padding: 36px 30px 23px
+		margin-bottom: 10px
+	.partners__item
+		+clr
+		&.partners__item_grey
+			background: #f4f4f4
+	.partners__col
+		padding: 12px 0
+		float: left
+		width: 50%
+		&:first-child
+			line-height: 80px
+			text-align: center
+			.ico
+				vertical-align: middle
+	.partners__name
+		margin-bottom: 10px
+	// .partners__phone
+	.partners__mail
+		color: $purple
+		text-decoration: none
+		&:hover
+			text-decoration: underline
 
 //datepicker
 .ui-datepicker-header

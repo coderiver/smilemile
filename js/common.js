@@ -87,8 +87,66 @@ head.ready(function() {
         return false;
     });
 
+    $( ".google-map__window" ).parent().css( "position", "relative" );
+
 });
 	//scrollPane
 	$('.scroll-pane').jScrollPane({
 		hideFocus: true
 	});
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 12,
+                center: new google.maps.LatLng(41.804444, 12.250833),
+                disableDefaultUI: true,
+                scrollwheel: false,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.DEFAULT,
+                    position: google.maps.ControlPosition.LEFT_CENTER
+                },
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+
+            }
+            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            var image = 'img/icons/marker.png';
+            var myLatLng1 = new google.maps.LatLng(50.345001, 30.894722);
+            var myLatLng2 = new google.maps.LatLng(41.804444, 12.250833);
+            var marker1 = new google.maps.Marker({
+                  position: myLatLng1,
+                  map: map,
+                  title: 'Аэропорт Киев Борисполь”', 
+                  icon: image
+            });
+            var marker2 = new google.maps.Marker({
+                  position: myLatLng2,
+                  map: map,
+                  title: 'Leonardo Da Vinci International Airport (FCO)”', 
+                  icon: image
+            });
+            var contentString1 =    '<div class="google-map__window">'
+                    +'<div class="google-map__block"><i></i><p>Аэропорт Киев Борисполь</p></div>';
+
+            var contentString2 =    '<div class="google-map__window">'
+                    +'<div class="google-map__block"><i></i><p>Leonardo Da Vinci International Airport (FCO)</p></div>';
+
+            var infowindow1 = new google.maps.InfoWindow({
+                content: contentString1
+            });
+            var infowindow2 = new google.maps.InfoWindow({
+                content: contentString2
+            });
+                //infowindow1.open(map,marker1);
+            infowindow2.open(map,marker2);
+
+        }
+        // Asynchronous Loading
+        function loadScript() {
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'http://maps.googleapis.com/maps/api/js?sensor=false&language=ru&' +
+              'callback=initialize';
+          document.body.appendChild(script);
+        }
+        window.onload = loadScript;
