@@ -75,6 +75,9 @@ body
 	margin: 0
 	&.out_rel
 		position: relative
+	&.out_hidden
+		position: relative
+		overflow: hidden
 		.google-map
 			position: absolute
 			top: 193px
@@ -128,7 +131,12 @@ body
 				left: 50%
 				margin-left: -10px
 				+s(map-pic)
-
+		.jspVerticalBar
+			z-index: 10
+		.scroll-pane
+			width: 407px
+			float: right
+			max-height: 490px
 //container
 .container
 	margin: 0 auto
@@ -138,25 +146,34 @@ body
 		position: relative
 	&.container_map
 		position: relative
-		margin-top: 40px
-		z-index: 10
+		margin-top: 70px
+		// .scroll-field
+		// 	position: absolute
+		// 	width: 359px
+		// 	height: 558px
+		// 	top: -34px
+		// 	right: 49px
+		// 	z-index: 10
+		// 	background: url(../img/wrap-bg-rad.png) no-repeat 0 0
 
 //wrapper
 .wrapper
-	padding: 26px 0 52px
+	padding: 26px 0 98px
 	
 //wrap
 .wrap
-	margin: 0 38px
+	margin: 0 38px 0 0
 	overflow: hidden
-	+border-radius(25px)
-	+box-shadow(0 1px 12px #000)
 	background: #fff
-	&.wrap_mod
-		margin: 8px 38px
 	&.wrap_partners
+		position: relative
 		float: right
-		width: 338px
+		margin-top: 0
+		margin-bottom: 0
+		width: 336px
+		z-index: 10
+		+box-shadow(none)
+		+border-radius(0)
 
 
 //header
@@ -686,6 +703,8 @@ body
 .editing
 	height: 590px
 	text-align: center
+	+border-radius(25px)
+	+box-shadow(0 1px 12px #000)
 	.editing__form
 		margin: 38px 0 34px 0
 		width: 490px
@@ -950,15 +969,52 @@ body
 		float: right
 		padding-top: 20px
 
+//field
+.field
+	position: relative
+	margin-top: 27px
+	padding-right: 40px
+	margin-right: 59px
+	quotes: 50%
+	+border-radius(25px)
+	+box-shadow(0 1px 12px #000)
+	padding: 20px 0
+	max-height: 550px
+	background: $white
+	&:before
+		position: absolute
+		left: 0
+		top: 20px
+		content: ''
+		width: 100%
+		height: 20px
+		z-index: 2
+		background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(68,159,229,0) 100%)
+	&:after
+		position: absolute
+		left: 0
+		bottom: 20px
+		content: ''
+		width: 100%
+		height: 20px
+		z-index: 2
+		background: -webkit-linear-gradient(top, rgba(68,159,229,0) 0%,rgba(255,255,255,1) 100%)
+	.field__wrap
+		margin-right: -59px
+	&.field_map	
+		position: relative
+		float: right
+		margin-top: 0
+		width: 338px
+		z-index: 10
+		+box
+
 //scroll-pane
 .scroll-pane
-	margin: 0 0 -8px -8px
-	// padding-top: 8px
-	max-height: 590px
+	max-height: 550px
 	overflow: auto
 	&.scroll-pane_mod
-		max-height: 536px
-		margin-top: 27px
+		max-height: 496px
 	.jspVerticalBar
 		right: 16px !important
 		background: none
